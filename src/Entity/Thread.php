@@ -35,6 +35,12 @@ class Thread
      */
     private $posts;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="threads")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
@@ -95,6 +101,18 @@ class Thread
                 $post->setThread(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }
