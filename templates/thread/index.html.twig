@@ -33,7 +33,7 @@
         <div class="container">
             <div class="field">
                 <div class="control has-icons-left">
-                    <textarea class="textarea post-reply" rows="8" cols="100"></textarea>
+                    <textarea name="text" class="textarea post-reply" rows="8" cols="100"></textarea>
                     <span class="icon is-small is-left post-reply-icon"><i class="fas fa-reply"></i></span>
                 </div>
             </div>
@@ -43,6 +43,9 @@
                 </div>
             </div>
         </div>
+
+        <input type="hidden" name="author_id" value="{{ app.user.id }}">
+        <input type="hidden" name="thread_id" value="{{ thread.id }}">
 
         </form>
     </div>
