@@ -15,3 +15,5 @@ docker-compose run phpcli php bin/console doctrine:migrations:migrate
 
 (visit http://localhost:5000)
 ```
+
+There's 'admin', 'bob', 'alice', 'mallory' users, admin@example.com/admin, bob@example.com/bob, ...
