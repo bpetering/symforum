@@ -1,0 +1,43 @@
+<style>
+    body.login {
+        background: #00d1b2;
+    }
+    body.login h3 {
+        color: #fff;
+    }
+    body.login label {
+        color: #fff;
+    }
+    .logout-link { color: #fff; }
+    .icon { font-size: 2em; }
+    .backlink { color: #f2fbfb; }
+</style>
+
+<section class="intro hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-one-quarter">
+                        <h1 class="title">Ben&rsquo;s Forum</h1>
+                        <h2 class="subtitle">A friendly place to discuss things</h2>
+                        {% if app.request.requesturi != '/' %}
+                        <a class="backlink" href="/"><strong>&#8592; Back to index</strong></a>
+                        {% endif %}
+                    </div>
+                    <div class="column is-one-quarter">&nbsp;</div>
+                    <div class="column is-one-quarter">
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <p>Logged in as </p>
+                            <h3 class="subtitle">{{ app.user.email }}</h3>
+                        {% endif %}
+                    </div>
+                    <div class="column is-one-quarter">
+                        <a href="{{ path('app_logout') }}" title="Logout" class="logout-link">
+                            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
