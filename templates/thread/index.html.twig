@@ -3,6 +3,15 @@
 {% block title %}{{ thread.topic }}{% endblock %}
 
 {% block stylesheets %}
+    <style>
+    .post-details {
+        color: #333;
+        opacity: 0.7;
+    }
+    .post-time {
+        color: #999;
+    }
+    </style>
 {% endblock %}
 
 {% block body %}
@@ -18,11 +27,16 @@
     {% for post in thread.posts %}
         <section class="section post">
         <div class="container">
-        <div class="box">
-            <div class="post-content">
-            {{ post.text }}
+            <div class="box">
+                <div class="post-content">
+                {{ post.text }}
+                </div>
             </div>
-        </div>
+            <p class="post-details">
+                <span class="post-author">{{ post.author.username }}</span> 
+                ,
+                <span class="post-time">{{ post.time.format('H:i:s j F Y') }}</span>
+            </p>
         </div>
         </section>
     {% endfor %}
