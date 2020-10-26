@@ -8,17 +8,54 @@
 {% block body %}
     {% include 'header.html.twig' %}
 
+    <section class="section">
+        <div class="container">
+        <h3 class="title is-3">{{ thread.topic }}</h3>
+        <h5 class="subtitle is-5">Thread</h3>
+        </div>
+    </section>
+
     {% for post in thread.posts %}
         <section class="section post">
+        <div class="container">
         <div class="box">
+            <div class="post-content">
             {{ post.text }}
+            </div>
+        </div>
         </div>
         </section>
     {% endfor %}
 
+    <section class="section reply">
+        <form action="{{ path('post') }}" method="POST">
+
+        <div class="container">
+            <div class="field">
+                <div class="control has-icons-left">
+                    <textarea class="textarea post-reply" rows="8" cols="100"></textarea>
+                    <span class="icon is-small is-left post-reply-icon"><i class="fas fa-reply"></i></span>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="button is-primary" type="submit" value="Post">
+                </div>
+            </div>
+        </div>
+
+        </form>
+    </div>
+
     {% if thread.posts|length < 1 %}
         <p>This thread doesn't have any posts.</p>
     {% endif %}
+
+    <script>
+        document.querySelector('.post-reply').onclick = function(element) {
+            document.querySelector('.post-reply-icon').remove();
+        }
+    </script>
 
 </div>
 {% endblock %}
