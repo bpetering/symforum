@@ -24,6 +24,15 @@
         </div>
     </section>
 
+    {% if thread.posts|length < 1 %}
+        <section class="section">
+            <div class="container">
+                <p>This thread doesn't have any posts.</p>
+            </div>
+        </section>
+    {% endif %}
+
+
     {% for post in thread.posts %}
         <section class="section post">
         <div class="container">
@@ -63,10 +72,6 @@
 
         </form>
     </div>
-
-    {% if thread.posts|length < 1 %}
-        <p>This thread doesn't have any posts.</p>
-    {% endif %}
 
     <script>
         document.querySelector('.post-reply').onclick = function(element) {
