@@ -1,20 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello IndexController!{% endblock %}
+{% block title %}Ben&lsquo;s Forum{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <section class="intro hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Ben&lsquo;s Forum</h1>
+                <h2 class="subtitle">A friendly place to discuss things</h2>
+            </div>
+        </div>
+    </section>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {% for subforum in subforums %}
+    <section class="section">
+    <div class="container">
+        <div class="box">
+        <h4 class="subtitle is-4">{{ subforum.name }}</h2>
+        {#
+        <div class="subforum-latest-posts subforum-posts">
+            {% for post in subforum.recent_posts %}
+                <div class="post-preview">
+                    <div class="post-topic"></div>
+                    <div class="post-author"></div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+        #}
+    </div>
+    </div>
+    </section>
+    {% endfor %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/app/src/Controller/IndexController.php'|file_link(0) }}">src/Controller/IndexController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/app/templates/index/index.html.twig'|file_link(0) }}">templates/index/index.html.twig</a></code></li>
-    </ul>
 </div>
 {% endblock %}
