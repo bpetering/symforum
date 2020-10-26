@@ -6,6 +6,10 @@
     <style>
     .logout-link { color: #fff; }
     .icon { font-size: 2em; }
+
+    .thread-author { text-align: right; }
+    .subforum-threads a { color: #004c41; }
+    .subforum-threads a:hover { font-weight: bold; }
     </style>
 {% endblock %}
 
@@ -38,20 +42,25 @@
     {% for subforum in subforums %}
     <section class="section">
     <div class="container">
-        <div class="box">
-        <h4 class="subtitle is-4">{{ subforum.name }}</h2>
-        {#
-        <div class="subforum-latest-posts subforum-posts">
-            {% for post in subforum.recent_posts %}
-                <div class="post-preview">
-                    <div class="post-topic"></div>
-                    <div class="post-author"></div>
+        <nav class="panel">
+            <p class="panel-heading">
+                {{ subforum.name }}
+            </p>
+            {% for thread in subforum.threads %}
+            <div class="panel-block subforum-latest-threads subforum-threads">
+                <div class="container">
+                <div class="columns">
+                    <div class="column is-two-thirds thread-topic">
+                        <a href="{{ path('thread', {id:thread.id}) }}">{{ thread.topic }}</a>
+                    </div>
+                    <div class="column is-one-third thread-author">
+                        <a href="">{{ thread.author.username }}</a>
+                    </div>
                 </div>
-            {% endfor %}
+                </div>
             </div>
-        </div>
-        #}
-    </div>
+            {% endfor %}
+        </nav>
     </div>
     </section>
     {% endfor %}
