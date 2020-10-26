@@ -19,7 +19,6 @@ final class Version20201026104312 extends AbstractMigration
 
     public function up(Schema $schema) : void
     {
-        $this->addSql('ALTER TABLE "user" ADD username VARCHAR(255);');
         $this->addSql('UPDATE "user" SET username=\'admin\' where id=1;');
         $this->addSql('UPDATE "user" SET username=\'bob\' where id=2;');
         $this->addSql('UPDATE "user" SET username=\'alice\' where id=3;');
