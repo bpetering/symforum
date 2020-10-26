@@ -16,7 +16,7 @@
         </section>
     {% endfor %}
 
-    {% if not thread.posts %}
+    {% if thread.posts|length < 1 %}
         <p>This thread doesn't have any posts.</p>
     {% endif %}
 
